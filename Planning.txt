@@ -1,0 +1,45 @@
+<<< --- O D I N   -   R E S T A U R A N T   -   P L A N N I N G --- >>>
+
+<< -- THE RESTAURANT -- >>
+Name: The Bruised Orange
+Type: Jazz Cafe/Bar
+Cuisine: Cock/Mocktails, finger food, rotating specials
+Target Audience: Music Lovers, Sustainable, Earthy
+Theme/Vibe: Sultry yet cozy
+
+<< -- THE WEBSITE -- >>
++ Theme/Vibe: Sultry yet cozy
++ Palette
+	/* CSS HEX */
+	--olive-green: #9fab4e;
+	--double-spanish white: #e5e2b7;
+	--rangoon-green: #070806;
+	--peat: #706d55;
+	--kelp: #4e503c;
+	--piper: #cd4e25;
+	--kelp: #3b3b2d;
+	--friar-gray: #84837c;
+	--tundora: #444344;
+
++ Pages
+	- Home
+	- Menu
+	- About
+	
++ Main Features
+	- Browse pages (tabbed style)
+	- Tasteful ambience (CSS)
++ Future Features
+	- Menu Item pages/popups
+	- Ordering System (fake)
+	- Reservation page and contact form
+	
+<< -- "COMPETTION" RESEARCH -- >>
+
++ La Grenouille (Not so much the webiste but the ambience)
++ Ai Fiori - https://aifiorinyc.com/
++ Old Faithful - https://www.deathandcompany.com/
+
+
+<< -- NOTES -->>
+Do a Jazz flier design!
