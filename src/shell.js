@@ -1,17 +1,25 @@
+import Banner from "./images/home_banner.jpg";
+import Logo from "./images/logo.png";
 export function NavBar(){
     let navBar = document.createElement("header");
+    let titleBox = document.createElement("div");
+    titleBox.id = "titleBox";
     let title = document.createElement("h1"); title.innerHTML = "<i>Bruised</i>";
-    navBar.appendChild(title);
-    navBar.appendChild(document.createElement("hr"));
+    titleBox.appendChild(title);
+    let logoImg = new Image();
+    logoImg.src = Logo;
+    logoImg.id = "logo";
+    titleBox.appendChild(logoImg);
+    navBar.appendChild(titleBox);
+
     let nav = document.createElement("nav"); 
     let ul = document.createElement("ul");
     ul.appendChild(NavItem("Home", 1));
     ul.appendChild(NavItem("Menu", 2));
     ul.appendChild(NavItem("About", 3));
+    ul.appendChild(NavItem("Reservations", 4));
     nav.appendChild(ul);
     navBar.appendChild(nav);
-    navBar.appendChild(document.createElement("hr"))
-    //navBar.innerHTML =  "<hr><nav><ul><li class=\"navItem curr\">Home</li><li class=\"navItem\">Menu</li><li class=\"navItem\">About</li></ul></nav><hr>";
     return navBar;
 }
 
@@ -28,18 +36,19 @@ export function Home(){
     let tab = document.createElement("div");
     tab.id = "tab";
 
-    let homeTitle = document.createElement("h1");
-    homeTitle.innerHTML = "The Bruised Orange Jazz Bar";
-    tab.appendChild(homeTitle);
+    let banner = new Image();
+    banner.src = Banner;
+    banner.classList.add("background");
+    tab.appendChild(banner);
 
-    let homeTag = document.createElement("h3");
+    let textDiv = document.createElement("div");
+    textDiv.id = "welcome-txt";
+
+    let homeTag = document.createElement("h1");
     homeTag.innerHTML = "Where jazz meets sustainability";
-    tab.appendChild(homeTag);
+    textDiv.appendChild(homeTag);
+    tab.appendChild(textDiv);
 
-    let homeImg1 = document.createElement("img");
-    homeImg1.src = "../src/images/image.jpg";
-    homeImg1.style.height = "400px";
-    tab.appendChild(homeImg1);
     return tab;
 }
 
