@@ -1,32 +1,21 @@
 import "./style.css";
-import "./load";
-import { Home, Menu, About } from "./shell";
+import "./home.css"
+import "./shell";
+import { NavBar, Home, Menu, About, Footer } from "./shell";
 let navItems = document.querySelectorAll(".navItem");
 let content = document.querySelector("#content");
+let currPage = 1;
 
 navItems.forEach((item) =>{
     item.addEventListener("click", ()=>{
-        let old = document.querySelector(".curr");
-        old.classList.remove("curr");
-        item.classList.add("curr");
         setPage(item.getAttribute("data-tab"));
     })
 });
 
 function setPage(page){
-    let tab = document.querySelector("#tab");
-    if(tab != null){
-        console.log(tab);
-        console.log(page);
-        tab.parentNode.removeChild(tab);
+    console.log(page);
+    while (content.children[1]) {
+        content.removeChild(content.children[1])
     }
-    if(page == 1){
-        content.appendChild(Home());
-    }
-    else if(page == 2){
-        content.appendChild(Menu());
-    }
-    else if(page == 3){
-        content.appendChild(About());
-    }
+    content.appendChild(Footer());
 }

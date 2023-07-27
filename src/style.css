@@ -20,17 +20,11 @@ body{
     transform-style: preserve-3d;
     z-index: -1;
 }
-
-#welcome-txt{
-    margin-top: 100px;
-    text-shadow: 0 0 5px black;
-    text-align: center;
-}
 .background{
     position: absolute; height: 100%; width: 105%; 
     object-fit: cover;
     transform: translateZ(-10px) scale(2);
-    filter:grayscale(0.8);
+    filter: grayscale(0.8);
 }
 
 /*HEADER*/
@@ -83,4 +77,10 @@ nav > ul{
     margin-left: -15px;
     margin-top: 2px;
     transform: rotate(30deg);
+}
+
+footer{
+    height: 100px;
+    background-color: #40383e;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
 }

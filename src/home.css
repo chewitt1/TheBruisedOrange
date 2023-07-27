@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&display=swap');
+/*Welcome*/
+#welcome-txt{
+    margin-top: 100px;
+    font-size: 30px; text-align: center;
+    color: transparent; text-shadow: 0 0 5px black;
+    text-transform: uppercase;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: #db9407;
+}
+
+#foodMenu{
+    background: url("./images/produce.jpg");
+    background-size: cover;
+    height: 450px;
+}
+#tastingMenu{
+    background: url("./images/home_banner.jpg");
+    background-size: cover;
+    height: 450px;
+}
+.colorOverlay{
+    height: 100%; width: 100%; background-color: #aa750c; opacity: 0.9;
+    display: flex; justify-content: center; align-items: center;
+}
+.colorOverlay2{
+    height: 100%; width: 100%; background-color: #9fab4e; opacity: 0.9;
+    display: flex; justify-content: center; align-items: center;
+}
+#foodMenuTxt, #tastingMenuTxt{
+    background-color: #dbd2c0; color: #241a06;
+    height: 250px; width: 500px;
+    display: flex; flex-direction: column; align-items: center; text-align: center; justify-content: center;
+    padding: 40px 0; gap: 50px;
+}
+#foodMenuTxt > button, #tastingMenuTxt > button{
+    font-size: 20px;
+    height: 40px; width: 200px;
+    border-radius: 0;
+    border: 3px solid #aa750c;
+    background-color: rgba(240, 234, 223, 0.9);
+    font-family: 'Playfair Display', serif;
+    z-index: 3;
+}
+
+#foodMenuTxt > button:hover, #tastingMenuTxt > button:hover{
+    cursor: pointer;
+    background-color: #aa750c;
+    color: #dbd2c0;
+}
+
+#tastingImg{
+    width: 300px;
+    object-fit: cover;
+    z-index: 1;
+}
