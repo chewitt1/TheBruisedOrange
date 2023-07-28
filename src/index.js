@@ -2,6 +2,7 @@ import "./style.css";
 import "./home.css";
 import "./menu.css";
 import "./about.css";
+import "./reservations.css"
 import "./shell";
 import { NavBar, Home, Menu, About, Reservations, Footer } from "./shell";
 let navItems = document.querySelectorAll(".navItem");

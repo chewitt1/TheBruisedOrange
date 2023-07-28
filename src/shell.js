@@ -251,16 +251,47 @@ export function About(){
 }
 
 export function Reservations(){
-    let tab = document.createElement("div");
+    let reservation = document.createElement("div");
+    reservation.id = "reservation";
 
-    let homeTitle = document.createElement("h1");
-    homeTitle.innerHTML = "Reservations";
-    tab.appendChild(homeTitle);
+    let reservationTitle = document.createElement("h1");
+    reservationTitle.innerHTML = "Reservations";
+    reservation.appendChild(reservationTitle);
 
-    let homeTag = document.createElement("h3");
-    homeTag.innerHTML = "The Bruised Orange Jazz Bar";
-    tab.appendChild(homeTag);
-    return tab;
+    let reservationTag = document.createElement("h3");
+    reservationTag.innerHTML = "The Bruised Orange Jazz Bar";
+    reservation.appendChild(reservationTag);
+
+    let reservationSection = document.createElement("div");
+    reservationSection.id = "reservation-section";
+
+    let reservationForm = document.createElement("form");
+    reservationForm.id = "reservation-form";
+    reservationForm.appendChild(inputRow("name", "text"));
+    reservationForm.appendChild(inputRow("guests", "number"));
+    reservationForm.appendChild(inputRow("time", "number"));
+    reservationForm.appendChild(inputRow("email", "email"));
+    reservationForm.appendChild(inputRow("phone number", "tel"));
+
+    let reserveBtn = document.createElement("button"); reserveBtn.innerHTML = "RESERVE";
+
+    reservationSection.appendChild(reservationForm);
+    reservation.appendChild(reservationSection);
+
+    return reservation;
+}
+
+function inputRow(name, type){
+    let label = document.createElement("label"); 
+    label.innerHTML = (name.toUpperCase()); label.setAttribute("for", name);
+    let inputVal = document.createElement("INPUT"); 
+    inputVal.setAttribute("type", type); inputVal.setAttribute("name", name);
+
+    let inputRow = document.createElement("div");
+    inputRow.classList.add("input-row");
+    inputRow.appendChild(label); inputRow.appendChild(inputVal);
+
+    return inputRow;
 }
 
 export function Footer(){
