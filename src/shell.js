@@ -189,7 +189,7 @@ export function Menu(){
         );
     }
     menu.appendChild(mainDishes);
-    
+
     let dessertsTitle = document.createElement("h1"); dessertsTitle.innerHTML = "DESSERTS";
     menu.appendChild(dessertsTitle);
     let desserts = document.createElement("section");
@@ -230,16 +230,24 @@ function MenuItem(name, price, description){
 }
 
 export function About(){
-    let tab = document.createElement("div");
+    let about = document.createElement("div");
+    about.id = "about";
 
-    let homeTitle = document.createElement("h1");
-    homeTitle.innerHTML = "About";
-    tab.appendChild(homeTitle);
+    let aboutTitle = document.createElement("h1");
+    aboutTitle.innerHTML = "About";
+    about.appendChild(aboutTitle);
 
-    let homeTag = document.createElement("h3");
-    homeTag.innerHTML = "The Bruised Orange Jazz Bar";
-    tab.appendChild(homeTag);
-    return tab;
+    let aboutTag = document.createElement("h3");
+    aboutTag.innerHTML = "The Bruised Orange Jazz Bar";
+    about.appendChild(aboutTag);
+
+    let aboutSection = document.createElement("div");
+    aboutSection.id = "about-section";
+    aboutSection.innerHTML = "Founded in 2023, The Bruised Orange @copy; is a fake jazz bar and restaurant." + 
+    "It was thought up and designed by Carrima Hewitt for the Odin Project's Restauarant project." + 
+    "While it's not perfect, it was a labor or love and will be continuously improved because it is so fun to work on.";
+    about.appendChild(aboutSection);
+    return about;
 }
 
 export function Reservations(){
