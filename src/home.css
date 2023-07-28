@@ -55,13 +55,12 @@
     z-index: 1;
 }
 
-section{
+#homeSection{
     height: 200vh;
     text-align: center;
     background: #403840;
     display: flex; flex-direction: column; align-items: center; text-align: center;
     padding: 40px;
-    box-shadow: 0 0 10px red;
 }
 
 #traits{

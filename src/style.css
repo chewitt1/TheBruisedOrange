@@ -82,7 +82,7 @@ nav > ul{
 footer{
     height: 100vh; width: 100%;
     padding-top: 100px;
-    background-color: #40383e; border-top: 2px solid #db9407;
+    background-color: #40383e;
     display: flex; flex-direction: column; align-items: center; text-align: center; justify-content: center;
     gap: 50px;
 }

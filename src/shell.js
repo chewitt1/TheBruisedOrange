@@ -160,16 +160,73 @@ export function Home(){
 }
 
 export function Menu(){
-    let tab = document.createElement("div");
+    let menu = document.createElement("div");
+    menu.id = "menu";
+    let appetizersTitle = document.createElement("h1"); appetizersTitle.innerHTML = "APPETIZERS";
+    menu.appendChild(appetizersTitle);
+    let appetizers = document.createElement("section");
+    appetizers.classList.add("menu-section");
+    for(let i = 0; i < 4; i++){
+        appetizers.appendChild(
+            MenuRow(
+                MenuItem("Calamari", 15, "Just the calamari from the sea and stuff. You know the vibes."),
+                MenuItem("Chicken Skewers", 12, "The stuff with wings and feathers that can't fly. Served without the feathers on a stick.")
+            )
+        );
+    }
+    menu.appendChild(appetizers);
 
-    let homeTitle = document.createElement("h1");
-    homeTitle.innerHTML = "Menu";
-    tab.appendChild(homeTitle);
+    let mainDishesTitle = document.createElement("h1"); mainDishesTitle.innerHTML = "MAIN DISHES";
+    menu.appendChild(mainDishesTitle);
+    let mainDishes = document.createElement("section");
+    mainDishes.classList.add("menu-section");
+    for(let i = 0; i < 4; i++){
+        mainDishes.appendChild(
+            MenuRow(
+                MenuItem("Fish", 35, "Just the fish from the sea and stuff. You know the vibes."),
+                MenuItem("Steak", 40, "You can have it anyway you want it. Almost alive or charred. We don't judge here.")
+            )
+        );
+    }
+    menu.appendChild(mainDishes);
+    
+    let dessertsTitle = document.createElement("h1"); dessertsTitle.innerHTML = "DESSERTS";
+    menu.appendChild(dessertsTitle);
+    let desserts = document.createElement("section");
+    desserts.classList.add("menu-section");
+    for(let i = 0; i < 4; i++){
+        desserts.appendChild(
+            MenuRow(
+                MenuItem("Cake", 14, "The Yummy Stuff"),
+                MenuItem("Pecan Pie", 40, "The other yummy stuff")
+            )
+        );
+    }
+    menu.appendChild(desserts);
+    return menu;
+}
 
-    let homeTag = document.createElement("h3");
-    homeTag.innerHTML = "Item Name";
-    tab.appendChild(homeTag);
-    return tab;
+
+function MenuRow(item1, item2){
+    let menuRow = document.createElement("div");
+    menuRow.classList.add("menu-row");
+    menuRow.appendChild(item1); menuRow.appendChild(item2);
+    return menuRow;
+}
+
+function MenuItem(name, price, description){
+    let itemName = document.createElement("h3");
+    itemName.innerHTML = name;
+    let itemDescription = document.createElement("p");
+    itemDescription.innerHTML = "<i>" + description + "</i>";
+    let itemPrice = document.createElement("p");
+    itemPrice.innerHTML = price
+    
+    let menuItem = document.createElement("div");
+    menuItem.classList.add("menu-item");
+
+    menuItem.appendChild(itemName); menuItem.appendChild(itemDescription); menuItem.appendChild(itemPrice); 
+    return menuItem;
 }
 
 export function About(){
