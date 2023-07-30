@@ -7,6 +7,29 @@ import Jazz from "./images/jazz.jpg";
 import Drink from "./images/drink.jpg";
 import Meal from "./images/meal.jpg"
 
+function DOMActions(){
+    const createElement = (type, content, isClass, selector) => {
+        let element = document.createElement(type);
+        if (content != null){
+            (type === "img") ? (element.src = content) (element.innerHTML = content);
+        }
+        if (selector != null){
+            (isClass === true) ? (element.classList.add(selector)) (element.id = selector);
+        }
+        return element;
+    };
+    const addChildren = () => {
+        let parent = arguments[0];
+        let children = arguments.slice(1);
+        
+        for(var i = 0; i < children.length; i++){
+            parent.appendChild(children[i];
+        }
+    };
+    return { createElement, addChildren };
+    
+}
+
 export function NavBar(){
     let navBar = document.createElement("header");
     let titleBox = document.createElement("div");
