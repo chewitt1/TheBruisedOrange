@@ -352,8 +352,9 @@ export function Footer(){
 }
 
 //Initial Page Load setup
+let header = document.querySelector("header");
 let content = document.querySelector("#content");
-content.appendChild(NavBar());
+header.innerHTML = NavBar().innerHTML;
 content.appendChild(Home().tab);
 content.appendChild(Home().foodMenu);
 content.appendChild(Home().section1);
