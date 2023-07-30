@@ -27,7 +27,6 @@ function DOMActions(){
         }
     };
     return { createElement, addChildren };
-    
 }
 
 export function NavBar(){
