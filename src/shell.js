@@ -78,7 +78,6 @@ export function Home(){
     DOM.addChildren(foodSection, foodImg, foodTxt);
     foodMenu.appendChild(foodSection);
     
-
     //Section 1
     let section1 = DOM.createElement("section", null, false, "homeSection");
     let sectionTop = DOM.createElement("div");
