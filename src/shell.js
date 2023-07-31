@@ -7,178 +7,116 @@ import Jazz from "./images/jazz.jpg";
 import Drink from "./images/drink.jpg";
 import Meal from "./images/meal.jpg"
 
-function DOMActions(){
-    const createElement = (type, content, isClass, selector) => {
+const DOM = (() =>{
+    const createElement = (type, content, isClass, selector, attribute) => {
         let element = document.createElement(type);
         if (content != null){
-            (type === "img") ? (element.src = content) (element.innerHTML = content);
+            (type === "img") ? (element.src = content) : (element.innerHTML = content);
         }
         if (selector != null){
-            (isClass === true) ? (element.classList.add(selector)) (element.id = selector);
+            if (isClass === true){
+                for(var i = 0; i < selector.length; i++){
+                    element.classList.add(selector[i]);
+                }
+            }else{(element.id = selector);}
+        }
+        if(attribute != null){
+            element.setAttribute(attribute[0], attribute[1]);
         }
         return element;
     };
-    const addChildren = () => {
-        let parent = arguments[0];
-        let children = arguments.slice(1);
+    const addChildren = (...rest) => {
+        let parent = rest[0];
+        let children = rest.slice(1);
         
         for(var i = 0; i < children.length; i++){
-            parent.appendChild(children[i];
+            parent.appendChild(children[i]);
         }
     };
     return { createElement, addChildren };
-}
+})();
 
 export function NavBar(){
     let navBar = document.createElement("header");
-    let titleBox = document.createElement("div");
-    titleBox.id = "titleBox";
-    let title = document.createElement("h1"); title.innerHTML = "<i>Bruised</i>";
-    titleBox.appendChild(title);
-    let logoImg = new Image();
-    logoImg.src = Logo;
-    logoImg.id = "logo";
-    titleBox.appendChild(logoImg);
-    navBar.appendChild(titleBox);
+    let titleBox = DOM.createElement("div", null, false, "titleBox");
+    let title = DOM.createElement("h1", "<i>Bruised</i>");
+    let logoImg = DOM.createElement("img", Logo, false, "logo");
+    DOM.addChildren(titleBox, title, logoImg);
 
-    let nav = document.createElement("nav"); 
-    let ul = document.createElement("ul");
-    ul.appendChild(NavItem("Home", 1));
-    ul.appendChild(NavItem("Menu", 2));
-    ul.appendChild(NavItem("About", 3));
-    ul.appendChild(NavItem("Reservations", 4));
-    nav.appendChild(ul);
-    navBar.appendChild(nav);
+    let ul = DOM.createElement("ul");
+    DOM.addChildren(ul, (NavItem("Home", 1)), (NavItem("Menu", 2)), (NavItem("About", 3)), (NavItem("Reservations", 4)));
+    let nav = DOM.createElement("nav"); 
+    DOM.addChildren(nav, ul);
+
+    DOM.addChildren(navBar, titleBox, nav);
     return navBar;
 }
 
 function NavItem(txt, val){
-    let item = document.createElement("li");
-    item.classList.add("navItem");
-    if(val == 1){item.classList.add("curr");}
-    item.innerHTML = txt;
-    item.setAttribute("data-tab" , val);
-    return item;
+    return (val == 1) ? (DOM.createElement("li", txt, true, ["navItem", "curr"], ["data-tab" , val])) 
+                      : (DOM.createElement("li", txt, true, ["navItem"], ["data-tab" , val]));
 }
 
 export function Home(){
-    //Tab
-    let tab = document.createElement("div");
-    
-    tab.classList.add("home");
+    //HOME
+    let home = DOM.createElement("div", null, true, ["home"]);
+    let banner = DOM.createElement("img", Banner, true, ["background"]);
+    let textDiv = DOM.createElement("div", null, false, "welcome-txt");
+    textDiv.appendChild(DOM.createElement("h1", "Where jazz meets <br>sustainability"));
 
-    let banner = new Image();
-    banner.src = Banner;
-    banner.classList.add("background");
-    tab.appendChild(banner);
+    DOM.addChildren(home, banner, textDiv);
 
-    let textDiv = document.createElement("div");
-    textDiv.id = "welcome-txt";
+    //FOOD MENU
+    let foodMenu = DOM.createElement("div", null, false, "foodMenu");
+    let foodSection = DOM.createElement("div", null, true, ["colorOverlay"]);
+    let foodImg = DOM.createElement("img", Food, false, "foodImg");
+    let foodTxt = DOM.createElement("div", null, false, "foodMenuTxt");
 
-    let homeTag = document.createElement("h1");
-    homeTag.innerHTML = "Where jazz meets <br>sustainability";
-    textDiv.appendChild(homeTag);
-    tab.appendChild(textDiv);
-
-    //Food Menu Section
-    let foodMenu = document.createElement("div");
-    foodMenu.id = "foodMenu";
-
-    let foodSection = document.createElement("div");
-    foodSection.classList.add("colorOverlay");
-
-    let foodImg = new Image(); foodImg.src = Food; 
-    foodImg.style.height = "300px";
-    foodSection.appendChild(foodImg);
-
-    let foodTxt = document.createElement("div");
-    foodTxt.id = "foodMenuTxt";
-
-    let foodTxtTitle = document.createElement("h2");
-    foodTxtTitle.innerHTML = "FOOD MENU"
-    foodTxt.appendChild(foodTxtTitle);
-
-    let foodTxtP = document.createElement("p");
-    foodTxtP.innerHTML = "Experience ingredient-first dining"
-    foodTxt.appendChild(foodTxtP);
-
-    let foodTxtBtn = document.createElement("button");
-    foodTxtBtn.innerHTML = "View Menu";
-    foodTxt.appendChild(foodTxtBtn);
-
-    foodSection.appendChild(foodTxt);
+    DOM.addChildren(foodTxt, DOM.createElement("h2", "FOOD MENU", true, ["light-shadow"]), 
+                             DOM.createElement("p", "Experience ingredient-first dining"),
+                             DOM.createElement("button", "View Menu"));
+    DOM.addChildren(foodSection, foodImg, foodTxt);
     foodMenu.appendChild(foodSection);
+    
 
     //Section 1
-    let section1 = document.createElement("section");
-    section1.id = "homeSection";
-    let sectionTop = document.createElement("div");
-    let logoImg = new Image();
-    logoImg.src = BigLogo;
-    sectionTop.appendChild(logoImg);
+    let section1 = DOM.createElement("section", null, false, "homeSection");
+    let sectionTop = DOM.createElement("div");
 
-    let traits = document.createElement("div");
-    traits.id = "traits";
+    let traits = DOM.createElement("div", null, false, "traits");
 
-    let trait1 = document.createElement("div");
-    trait1.classList.add("trait");
-    let traitTxt1 = document.createElement("h2"); traitTxt1.innerHTML = "JAZZ";
-    let traitImg1 = new Image(); traitImg1.src = Jazz;
-    trait1.appendChild(traitTxt1); trait1.appendChild(traitImg1);
-    traits.appendChild(trait1);
+    let trait1 = DOM.createElement("div", null, true, ["trait"]);
+    DOM.addChildren(trait1, DOM.createElement("h2", "JAZZ"), 
+                             DOM.createElement("img", Jazz));
 
-    let trait2 = document.createElement("div");
-    trait2.classList.add("trait");
-    let traitTxt2 = document.createElement("h2"); traitTxt2.innerHTML = "FOOD";
-    let traitImg2 = new Image(); traitImg2.src = Meal;
-    traitImg2.id = "foodImg";
-    trait2.appendChild(traitTxt2); trait2.appendChild(traitImg2);
-    traits.appendChild(trait2);
+    let trait2 = DOM.createElement("div", null, true, ["trait"]);
+    DOM.addChildren(trait2, DOM.createElement("h2", "FOOD"), 
+                            DOM.createElement("img", Meal, false, "traitImg"));
+    
+    let trait3 = DOM.createElement("div", null, true, ["trait"]);
+    DOM.addChildren(trait3, DOM.createElement("h2", "DRINKS"), 
+                            DOM.createElement("img", Drink));
+    
+    DOM.addChildren(traits, trait1, trait2, trait3);
+    DOM.addChildren(sectionTop, DOM.createElement("img", BigLogo), traits);
 
-    let trait3 = document.createElement("div");
-    trait3.classList.add("trait");
-    let traitTxt3 = document.createElement("h2"); traitTxt3.innerHTML = "DRINKS";
-    let traitImg3 = new Image(); traitImg3.src = Drink;
-    trait3.appendChild(traitTxt3); trait3.appendChild(traitImg3);
-    traits.appendChild(trait3);
-
-    sectionTop.appendChild(traits);
-    section1.appendChild(sectionTop);
-
-    let section1Message = document.createElement("div");
-    section1Message.id = "sectionMessage";
-    section1Message.innerHTML = "Our weekly rotating menu is curated using sustainable methodologies with the help from local farmers and suppliers."
-    section1.appendChild(section1Message);
+    let section1Message = DOM.createElement("div", "Our weekly rotating menu is curated using sustainable methodologies with the help from local farmers and suppliers.", false, "sectionMessage");
+    
+    DOM.addChildren(section1, sectionTop, section1Message);
 
     //Tasting Menu Section
-    let tastingMenu = document.createElement("div");
-    tastingMenu.id = "tastingMenu";
- 
-    let tastingSection = document.createElement("div");
-    tastingSection.classList.add("colorOverlay2");
- 
-    let tastingTxt = document.createElement("div");
-    tastingTxt.id = "tastingMenuTxt";
- 
-    let tastingTxtTitle = document.createElement("h2");
-    tastingTxtTitle.innerHTML = "TASTING MENU"
-    tastingTxt.appendChild(tastingTxtTitle);
- 
-    let tastingTxtP = document.createElement("p");
-    tastingTxtP.innerHTML = "Taste our unique liqueur combinations"
-    tastingTxt.appendChild(tastingTxtP);
- 
-    let tastingTxtBtn = document.createElement("button");
-    tastingTxtBtn.innerHTML = "View Menu";
-    tastingTxt.appendChild(tastingTxtBtn);
-    tastingSection.appendChild(tastingTxt);
+    let tastingMenu = DOM.createElement("div", null, false, "tastingMenu");
+    let tastingSection = DOM.createElement("div", null, true, ["colorOverlay2"]);
+    let tastingTxt = DOM.createElement("div", null, false, "tastingMenuTxt");
 
-    let tastingImg = new Image(); tastingImg.src = Drinks; 
-    tastingImg.id = "tastingImg"
-    tastingSection.appendChild(tastingImg);
+    DOM.addChildren(tastingTxt, DOM.createElement("h2", "TASTING MENU"), 
+                                DOM.createElement("p", "Taste our unique liqueur combinations"),
+                                DOM.createElement("button", "View Menu"));
+    
+    DOM.addChildren(tastingSection, tastingTxt, DOM.createElement("img", Drinks, false, "tastingImg"));
+
     tastingMenu.appendChild(tastingSection);
-
-    return {tab, foodMenu, section1, tastingMenu};
+    return {home, foodMenu, section1, tastingMenu};
 }
 
 export function Menu(){
@@ -352,10 +290,9 @@ export function Footer(){
 }
 
 //Initial Page Load setup
-let header = document.querySelector("header");
 let content = document.querySelector("#content");
-header.innerHTML = NavBar().innerHTML;
-content.appendChild(Home().tab);
+content.appendChild(NavBar());
+content.appendChild(Home().home);
 content.appendChild(Home().foodMenu);
 content.appendChild(Home().section1);
 content.appendChild(Home().tastingMenu);

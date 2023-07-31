@@ -23,7 +23,7 @@ function setPage(page){
         content.removeChild(content.children[1])
     }
     if(page == 1){
-        content.appendChild(Home().tab);
+        content.appendChild(Home().home);
         content.appendChild(Home().foodMenu);
         content.appendChild(Home().section1);
         content.appendChild(Home().tastingMenu);
