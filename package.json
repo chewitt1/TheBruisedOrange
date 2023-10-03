@@ -5,6 +5,8 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy-demo": "git push origin :gh-pages && git subtree push --prefix dist origin gh-pages",
+    "watch": "webpack --watch",
     "build": "webpack"
   },
   "author": "Carrima Hewitt",
